@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:33:57 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/08 17:40:48 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/09 12:53:32 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,12 @@
 int main(int ac, char **av)
 {
 	int i = 0;
-	char **s = get_map(av);
+	char **map = get_map(av);
 
-	while (s[i])
-		i++;
-	if (line_validator(s[0]) && line_validator(s[i - 1]))
-		printf("OK - O topo e o piso do mapa estão fechados\n");
-	if (column_validator(s))
-		printf("OK - As laterais do mapa estão fechadas\n");
-	if (character_and_collectible_validator(s))
-		printf("OK - Só existe um Personagem e uma saída, e existe ao menos um colecionável\n");
-	if (its_possible(s, 'C'))
-		printf("É possível\n");
+	if (map_validator(map))
+		printf("OK\n");
 	else
-		printf("Não possível\n");
+		printf("KO\n");
+	
 	return (0);
 }
