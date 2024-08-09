@@ -6,7 +6,7 @@
 #    By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:16:28 by lantonio          #+#    #+#              #
-#    Updated: 2024/08/08 17:40:57 by lantonio         ###   ########.fr        #
+#    Updated: 2024/08/09 13:30:27 by lantonio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ FLAGS	= -Wall -Wextra -Werror
 MLXLIB	= mlx/libmlx.a
 SRCS	= so_long.c\
 			./srcs/ft_split.c\
-			./srcs/map_validator.c
+			./srcs/map_validator.c\
+			./srcs/utils.c
 
 OBJS	= $(SRCS:.c=.o)
 NAME	= so_long

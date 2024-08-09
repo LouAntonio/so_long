@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/09 12:44:41 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/09 13:39:21 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,10 +168,36 @@ int	its_possible(char **map, char c)
 	return (0);
 }
 
+void	map_dimentions(char **map, int *width, int *height)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = matrix_len(map);
+	k = ft_strlen(map[0]);
+	*height = matrix_len(map);
+	i = 0;
+1	while (map[i])
+	{
+		j = ft_strlen(map[i]);
+		if (j != k)
+		{
+			write(1, "Error\nThe map collumns lenth don't match!\n", 42);
+			*width = 0;
+			break ;
+		}
+		i++;
+	}
+	*width = k;
+}
+
 int	map_validator(char **map)
 {
 	int	i;
 	int	flag;
+	int	width;
+	int	height;
 
 	i = 0;
 	flag = 0;
@@ -185,6 +211,12 @@ int	map_validator(char **map)
 		flag = 1;
 	if (!exit_validator(map))
 		flag = 1;
+	map_dimentions(map, width, height);
+	if (width == height)
+	{
+		printf("The map is a square!\n");
+		flag = 1;
+	}
 	if (flag)
 		return (0);
 	if (!its_possible(map, 'C') || !its_possible(map, 'E'))
