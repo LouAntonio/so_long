@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:19:07 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/12 14:19:59 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:52:01 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,27 +41,18 @@ void	map_render(char **map)
 		j = 0;
 		while (map[i][j]){
 			x = 50 * j;
-			y = 40 * i;
-			if (map[i][j] == '1'){
+			y = 50 * i;
+			if (map[i][j] == '1')
 				img = rocks;
-				mlx_put_image_to_window(mlx, mlx_w, img, x, y);
-			}
-			if (map[i][j] == '0'){
+			else if (map[i][j] == '0')
 				img = grass;
-				mlx_put_image_to_window(mlx, mlx_w, img, x, y);
-			}
-			if (map[i][j] == 'C'){
+			else if (map[i][j] == 'C')
 				img = batarang;
-				mlx_put_image_to_window(mlx, mlx_w, img, x, y);
-			}
-			if (map[i][j] == 'P'){
+			else if (map[i][j] == 'P')
 				img = batman;
-				mlx_put_image_to_window(mlx, mlx_w, img, x, y);
-			}
-			if (map[i][j] == 'E'){
+			else if (map[i][j] == 'E')
 				img = batmobile;
-				mlx_put_image_to_window(mlx, mlx_w, img, x, y);
-			}
+			mlx_put_image_to_window(mlx, mlx_w, img, x, y);
 			j++;
 		}
 		i++;

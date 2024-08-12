@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/12 12:52:47 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/12 17:48:22 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	flood_fill(char **map, int x, int y, int *found)
 		*found = 1;
 		return ;
 	}
-	if (map[x][y] == '1' || map[x][y] == 'V')
+	if (map[x][y] == '1' || map[x][y] == 'V' || map[x][y] == 'E')
 		return ;
 	map[x][y] = 'V';
 	flood_fill(map, x + 1, y, found);
@@ -220,7 +220,7 @@ int	map_validator(char **map)
 	map_dimentions(map, &width, &height, &flag);
 	if (flag)
 		return (0);
-	if (!its_possible(map, 'C') || !its_possible(map, 'E'))
+	if (!its_possible(map, 'C'))
 	{
 		printf("Its not possible to catch all the collectibles and exit!\n");
 		return (0);

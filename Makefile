@@ -6,7 +6,7 @@
 #    By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:16:28 by lantonio          #+#    #+#              #
-#    Updated: 2024/08/12 12:31:07 by lantonio         ###   ########.fr        #
+#    Updated: 2024/08/12 17:48:53 by lantonio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,20 +26,22 @@ NAME	= so_long
 all: $(NAME)
 
 $(NAME): $(OBJS) $(MLXLIB)
-	$(CC) $(OBJS) -Iincludes -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz  -o $(NAME)
+	@$(CC) $(OBJS) -Iincludes -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz  -o $(NAME)
 
 $(MLXLIB):
-	$(MAKE) -C ./mlx
+	@$(MAKE) -C ./mlx
 
 %.o: %.c
-	$(CC) -I/usr/include -Imlx -O3 -c $< -o $@
+	@$(CC) -I/usr/include -Imlx -O3 -c $< -o $@
 
 clean:
-	rm -f $(OBJS)
-	$(MAKE) clean -C ./mlx
+	@rm -f $(OBJS)
+	@$(MAKE) clean -C ./mlx
 
 fclean: clean
-	rm -f $(NAME)
-	$(MAKE) fclean -C ./mlx
+	@rm -f $(NAME)
+
+run: all
+	./so_long maps/valids/1.ber
 
 re: fclean all
