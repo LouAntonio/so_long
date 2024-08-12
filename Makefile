@@ -6,7 +6,7 @@
 #    By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:16:28 by lantonio          #+#    #+#              #
-#    Updated: 2024/08/12 17:48:53 by lantonio         ###   ########.fr        #
+#    Updated: 2024/08/12 19:01:45 by lantonio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,6 @@ fclean: clean
 	@rm -f $(NAME)
 
 run: all
-	./so_long maps/valids/1.ber
+	./so_long maps/valids/big.ber
 
 re: fclean all

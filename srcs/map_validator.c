@@ -6,11 +6,17 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/12 17:48:22 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:16:48 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+typedef struct  s_point
+  {
+    int           x;
+    int           y;
+  }               t_point;
 
 char	**get_map(char *av)
 {
@@ -123,51 +129,6 @@ int	exit_validator(char **map)
 	return (0);
 }
 
-void	flood_fill(char **map, int x, int y, int *found)
-{
-	if (map[x][y] == 'P')
-	{
-		*found = 1;
-		return ;
-	}
-	if (map[x][y] == '1' || map[x][y] == 'V' || map[x][y] == 'E')
-		return ;
-	map[x][y] = 'V';
-	flood_fill(map, x + 1, y, found);
-	flood_fill(map, x - 1, y, found);
-	flood_fill(map, x, y + 1, found);
-	flood_fill(map, x, y - 1, found);
-}
-
-int	its_possible(char **map, char c)
-{
-	int	i;
-	int	j;
-	int	k;
-	int	found;
-
-	i = 0;
-	j = 0;
-	k = 0;
-	found = 0;
-	while (map[i])
-	{
-		j = -1;
-		while (map[i][++j])
-		{
-			if (map[i][j] == c)
-			{
-				flood_fill(map, i, j, &found);
-				k++;
-			}
-		}
-		i++;
-	}
-	if (k == found)
-		return (1);
-	return (0);
-}
-
 void	map_dimentions(char **map, int *width, int *height, int *flag)
 {
 	int	i;
@@ -198,7 +159,72 @@ void	map_dimentions(char **map, int *width, int *height, int *flag)
 	}
 }
 
-int	map_validator(char **map)
+void	fill(char **map, t_point size, t_point cur, char *to_fill)
+{
+    int i;
+    i = 0;
+	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x)
+		return;
+    while (to_fill[i])
+    {
+        if (to_fill[i] == (char)map[cur.y][cur.x])
+        {
+            map[cur.y][cur.x] = 'F';
+            fill(map, size, (t_point){cur.x - 1, cur.y}, to_fill);
+            fill(map, size, (t_point){cur.x, cur.y + 1}, to_fill);
+            fill(map, size, (t_point){cur.x + 1, cur.y}, to_fill);
+            fill(map, size, (t_point){cur.x, cur.y - 1}, to_fill);
+        }
+        i++;
+    }
+}
+void	fill_exit(char **map, t_point size, t_point cur, char to_fill)
+{
+	if (to_fill != map[cur.y][cur.x])
+	{
+		map[cur.y][cur.x] = '0';
+		return;	
+	}
+	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x)
+		return;
+    map[cur.y][cur.x] = '0';
+	fill_exit(map, size, (t_point){cur.x - 1, cur.y}, to_fill);
+    fill_exit(map, size, (t_point){cur.x, cur.y + 1}, to_fill);
+    fill_exit(map, size, (t_point){cur.x + 1, cur.y}, to_fill);
+    fill_exit(map, size, (t_point){cur.x, cur.y - 1}, to_fill);
+}
+void	flood_fill_2(char **tab, t_point size, t_point begin)
+{
+	fill(tab, size, begin, "P0C");
+	fill_exit(tab, size, begin, 'F');
+}
+
+int	char_validator(char **map, char c)
+{
+	int	i;
+	int	j;
+	int	qtt;
+
+	i = 0;
+	qtt = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == c)
+				qtt++;
+			j++;
+		}
+		i++;
+	}
+	if (qtt)
+		return (0);
+	return (1);
+}
+
+
+int	map_validator(char *av)
 {
 	int	i;
 	int	flag;
@@ -207,6 +233,7 @@ int	map_validator(char **map)
 
 	i = 0;
 	flag = 0;
+	char **map = get_map(av);
 	while (map[i])
 		i++;
 	if (!line_validator(map[0]) && !line_validator(map[i - 1]))
@@ -220,11 +247,10 @@ int	map_validator(char **map)
 	map_dimentions(map, &width, &height, &flag);
 	if (flag)
 		return (0);
-	if (!its_possible(map, 'C'))
-	{
-		printf("Its not possible to catch all the collectibles and exit!\n");
+	map = get_map(av);
+	flood_fill_2(map, (t_point){4, 12}, (t_point){3, 1});
+	if (!char_validator(map, 'P') && !char_validator(map, 'E') && !char_validator(map, 'C'))
 		return (0);
-	}
 	printf("W = %d | H = %d\n", width, height);
 	return (1);
 }
