@@ -6,11 +6,10 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:33:57 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/09 13:29:53 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/12 13:45:04 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx/mlx.h"
 #include "includes/so_long.h"
 
 // typedef struct s_vars{
@@ -52,11 +51,12 @@
 
 int main(int ac, char **av)
 {
-	int i = 0;
-	char **map = get_map(av);
+	char **map;
 
+	(void)ac;
+	map = get_map(av[1]);
 	if (map_validator(map))
-		printf("OK\n");
+		map_render(get_map(av[1]));
 	else
 		printf("KO\n");
 	

@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:19:12 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/09 13:29:28 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/12 11:54:53 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,13 @@ int	ft_strlen(char *str)
 	while (str[i])
 		i++;
 	return (i);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (*str)
+		i += write(1, str++, 1);
 }

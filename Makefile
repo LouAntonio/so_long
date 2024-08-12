@@ -6,7 +6,7 @@
 #    By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:16:28 by lantonio          #+#    #+#              #
-#    Updated: 2024/08/09 13:30:27 by lantonio         ###   ########.fr        #
+#    Updated: 2024/08/12 12:31:07 by lantonio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ MLXLIB	= mlx/libmlx.a
 SRCS	= so_long.c\
 			./srcs/ft_split.c\
 			./srcs/map_validator.c\
-			./srcs/utils.c
+			./srcs/map_render.c\
+			./srcs/utils.c\
 
 OBJS	= $(SRCS:.c=.o)
 NAME	= so_long
@@ -31,7 +32,7 @@ $(MLXLIB):
 	$(MAKE) -C ./mlx
 
 %.o: %.c
-	$(CC) /usr/include -Imlx -O3 -c $< -o $@
+	$(CC) -I/usr/include -Imlx -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

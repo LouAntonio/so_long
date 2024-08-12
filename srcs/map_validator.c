@@ -6,13 +6,13 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/09 13:39:21 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/12 12:52:47 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-char	**get_map(char **av)
+char	**get_map(char *av)
 {
 	int		i;
 	char	c;
@@ -21,10 +21,10 @@ char	**get_map(char **av)
 	char	str[2000];
 
 	i = 0;
-	fd = open(av[1], O_RDONLY);
+	fd = open(av, O_RDONLY);
 	if (fd == -1)
 	{
-		write(1, "Error\nError while reading the map!\n", 35);
+		ft_putstr("Error\nError while reading the map!\n");
 		exit(1);
 	}
 	while (read(fd, &c, 1))
@@ -41,7 +41,7 @@ int	line_validator(char *str)
 	{
 		if (*str != '1')
 		{
-			write(1, "Error\nThe top or the bottom of the map is not closed!\n", 54);
+			ft_putstr("Error\nThe top or the bottom of the map is not closed!\n");
 			return (0);
 		}
 		str++;
@@ -87,9 +87,9 @@ int	character_validator(char **map)
 		i++;
 	}
 	if (qtt == 0)
-		write(1, "Error\nThere is not a player in the map!\n", 40);
+		ft_putstr("Error\nThere is not a player in the map!\n");
 	if (qtt > 1)
-		write(1, "Error\nThere is more then one player in the map!\n", 48);
+		ft_putstr("Error\nThere is more then one player in the map!\n");
 	if (qtt == 1)
 		return (1);
 	return (0);
@@ -115,9 +115,9 @@ int	exit_validator(char **map)
 		i++;
 	}
 	if (qtt == 0)
-		write(1, "Error\nThere is not a exit in the map!\n", 38);
+		ft_putstr("Error\nThere is not a exit in the map!\n");
 	else if (qtt > 1)
-		write(1, "Error\nThere is more then one exit in the map!\n", 46);
+		ft_putstr("Error\nThere is more then one exit in the map!\n");
 	if (qtt == 1)
 		return (1);
 	return (0);
@@ -168,7 +168,7 @@ int	its_possible(char **map, char c)
 	return (0);
 }
 
-void	map_dimentions(char **map, int *width, int *height)
+void	map_dimentions(char **map, int *width, int *height, int *flag)
 {
 	int	i;
 	int	j;
@@ -178,18 +178,24 @@ void	map_dimentions(char **map, int *width, int *height)
 	k = ft_strlen(map[0]);
 	*height = matrix_len(map);
 	i = 0;
-1	while (map[i])
+	while (map[i])
 	{
 		j = ft_strlen(map[i]);
 		if (j != k)
 		{
-			write(1, "Error\nThe map collumns lenth don't match!\n", 42);
+			ft_putstr("Error\nThe map collumns lenth don't match!\n");
 			*width = 0;
+			*flag = 1;
 			break ;
 		}
 		i++;
 	}
 	*width = k;
+	if (width == height)
+	{
+		ft_putstr("The map is a square!\n");
+		*flag = 1;
+	}
 }
 
 int	map_validator(char **map)
@@ -211,12 +217,7 @@ int	map_validator(char **map)
 		flag = 1;
 	if (!exit_validator(map))
 		flag = 1;
-	map_dimentions(map, width, height);
-	if (width == height)
-	{
-		printf("The map is a square!\n");
-		flag = 1;
-	}
+	map_dimentions(map, &width, &height, &flag);
 	if (flag)
 		return (0);
 	if (!its_possible(map, 'C') || !its_possible(map, 'E'))
@@ -224,5 +225,6 @@ int	map_validator(char **map)
 		printf("Its not possible to catch all the collectibles and exit!\n");
 		return (0);
 	}
+	printf("W = %d | H = %d\n", width, height);
 	return (1);
 }
