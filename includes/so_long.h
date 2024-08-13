@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/13 18:47:32 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/13 19:31:30 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ void	move_to_down(t_game *vars);
 void	move_to_left(t_game *vars);
 void	move_to_right(t_game *vars);
 int	char_validator(char **map, char c);
+void	free_matrix(char **matrix);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:04:44 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/13 18:57:00 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/13 19:31:14 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	finish_game(t_game *vars)
 	mlx_destroy_window(vars->mlx, vars->mlx_w);
 	mlx_destroy_display(vars->mlx);
 	free(vars->mlx);
+	free_matrix(vars->map);
 	exit(0);
 }
 
