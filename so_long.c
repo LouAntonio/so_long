@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:33:57 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/12 19:12:36 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/13 14:33:21 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ int main(int ac, char **av)
 	(void)ac;
 	map = get_map(av[1]);
 	if (map_validator(av[1]))
-		map_render(get_map(av[1]));
+		game_init(get_map(av[1]));
 	else
-		printf("KO main\n");
-	
+		exit(1);
 	return (0);
 }

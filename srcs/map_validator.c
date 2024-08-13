@@ -6,17 +6,11 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/12 19:16:48 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/13 18:35:06 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-typedef struct  s_point
-  {
-    int           x;
-    int           y;
-  }               t_point;
 
 char	**get_map(char *av)
 {
@@ -219,10 +213,28 @@ int	char_validator(char **map, char c)
 		i++;
 	}
 	if (qtt)
-		return (0);
-	return (1);
+		return (qtt);
+	return (0);
 }
+t_point	get_char_position(char **map, char c)
+{
+	int	i;
+	int	j;
 
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == c)
+				return ((t_point){i, j});
+			j++;
+		}
+		i++;
+	}
+	return ((t_point){i, j});
+}
 
 int	map_validator(char *av)
 {
@@ -234,23 +246,36 @@ int	map_validator(char *av)
 	i = 0;
 	flag = 0;
 	char **map = get_map(av);
-	while (map[i])
-		i++;
-	if (!line_validator(map[0]) && !line_validator(map[i - 1]))
-		flag = 1;
-	if (!column_validator(map))
-		flag = 1;
-	if (!character_validator(map))
-		flag = 1;
-	if (!exit_validator(map))
-		flag = 1;
-	map_dimentions(map, &width, &height, &flag);
-	if (flag)
-		return (0);
+	// while (map[i])
+	// 	i++;
+	// if (!line_validator(map[0]) && !line_validator(map[i - 1]))
+	// 	flag = 1;
+	// if (!column_validator(map))
+	// 	flag = 1;
+	// if (!character_validator(map))
+	// 	flag = 1;
+	// if (!exit_validator(map))
+	// 	flag = 1;
+	// map_dimentions(map, &width, &height, &flag);
+	// if (flag)
+	// 	return (0);
 	map = get_map(av);
-	flood_fill_2(map, (t_point){4, 12}, (t_point){3, 1});
-	if (!char_validator(map, 'P') && !char_validator(map, 'E') && !char_validator(map, 'C'))
-		return (0);
-	printf("W = %d | H = %d\n", width, height);
+	flood_fill_2(map, (t_point){height, width}, get_char_position(get_map(av), 'P'));
+	if (!char_validator(map, 'P'))
+	{
+		ft_putstr("KO P\n");
+		//ft_putstr("Its not possible to catch all the collectibles and exit\n");
+		//return (0);
+	}
+	if (!char_validator(map, 'E'))
+	{
+		ft_putstr("KO E\n");
+		//return (0);
+	}
+	if (!char_validator(map, 'C'))
+	{
+		ft_putstr("KO C\n");
+		//return (0);
+	}
 	return (1);
 }
