@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/13 19:31:30 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:40:33 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ void	game_init(char **map);
 int		key_press_handler(int keycode, t_game *vars);
 void	map_render(t_game vars);
 t_point	get_char_position(char **map, char c);
-void	move_to_up(t_game *vars);
-void	move_to_down(t_game *vars);
-void	move_to_left(t_game *vars);
-void	move_to_right(t_game *vars);
+void	move_to_up(t_game *vars, t_point player_position);
+void	move_to_down(t_game *vars, t_point player_position);
+void	move_to_left(t_game *vars, t_point player_position);
+void	move_to_right(t_game *vars, t_point player_position);
 int	char_validator(char **map, char c);
 void	free_matrix(char **matrix);
+void	finish_game(t_game *vars);
+t_point	get_player_position(char **map, char c);
 
 #endif

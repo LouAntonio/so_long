@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/13 18:35:06 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:34:30 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,26 @@ t_point	get_char_position(char **map, char c)
 		while (map[i][j])
 		{
 			if (map[i][j] == c)
+				return ((t_point){j, i});
+			j++;
+		}
+		i++;
+	}
+	return ((t_point){i, j});
+}
+
+t_point	get_player_position(char **map, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == c)
 				return ((t_point){i, j});
 			j++;
 		}
@@ -256,26 +276,15 @@ int	map_validator(char *av)
 	// 	flag = 1;
 	// if (!exit_validator(map))
 	// 	flag = 1;
-	// map_dimentions(map, &width, &height, &flag);
 	// if (flag)
 	// 	return (0);
 	map = get_map(av);
-	flood_fill_2(map, (t_point){height, width}, get_char_position(get_map(av), 'P'));
-	if (!char_validator(map, 'P'))
+	//map_dimentions(map, &width, &height, &flag);
+	flood_fill_2(map, (t_point){ft_strlen(map[0]) + 1, matrix_len(map) + 1}, get_char_position(get_map(av), 'P'));
+	if (char_validator(map, 'P') || char_validator(map, 'E') || char_validator(map, 'C'))
 	{
-		ft_putstr("KO P\n");
-		//ft_putstr("Its not possible to catch all the collectibles and exit\n");
-		//return (0);
-	}
-	if (!char_validator(map, 'E'))
-	{
-		ft_putstr("KO E\n");
-		//return (0);
-	}
-	if (!char_validator(map, 'C'))
-	{
-		ft_putstr("KO C\n");
-		//return (0);
+		ft_putstr("Its not possible to catch all the collectibles and exit\n");
+		return (0);
 	}
 	return (1);
 }

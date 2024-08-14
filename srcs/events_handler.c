@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:38:51 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/13 18:41:01 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/14 17:40:11 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,33 @@
 
 void	player_up(t_game *vars)
 {
-	t_point player_position = get_char_position(vars->map, 'P');
+	t_point player_position = get_player_position(vars->map, 'P');
 	if (vars->map[player_position.x - 1][player_position.y] != '1')
-		move_to_up(vars);
+		move_to_up(vars, player_position);
 }
 void	player_left(t_game *vars)
 {
-	t_point player_position = get_char_position(vars->map, 'P');
+	t_point player_position = get_player_position(vars->map, 'P');
 	if (vars->map[player_position.x][player_position.y - 1] != '1')
-		move_to_left(vars);
+		move_to_left(vars, player_position);
 }
 void	player_down(t_game *vars)
 {
-	t_point player_position = get_char_position(vars->map, 'P');
+	t_point player_position = get_player_position(vars->map, 'P');
 	if (vars->map[player_position.x + 1][player_position.y] != '1')
-		move_to_down(vars);
+		move_to_down(vars, player_position);
 }
 void	player_right(t_game *vars)
 {
-	t_point player_position = get_char_position(vars->map, 'P');
+	t_point player_position = get_player_position(vars->map, 'P');
 	if (vars->map[player_position.x][player_position.y + 1] != '1')
-		move_to_right(vars);
+		move_to_right(vars, player_position);
 }
 
 int	key_press_handler(int keycode, t_game *vars)
 {
-	if (keycode == 65307){
-		mlx_destroy_window(vars->mlx, vars->mlx_w);
-		mlx_destroy_display(vars->mlx);
-		free(vars->mlx);
-		exit(0);
-		return (0);
-	}
+	if (keycode == 65307)
+		finish_game(vars);
 	else if (keycode == 65363)
 		player_right(vars);
 	else if (keycode == 65361)
@@ -54,4 +49,5 @@ int	key_press_handler(int keycode, t_game *vars)
 		player_up(vars);
 	else if (keycode == 65364)
 		player_down(vars);
+	return (0);
 }
