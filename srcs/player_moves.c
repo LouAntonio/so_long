@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:04:44 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/14 17:39:58 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:28:45 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,92 +24,91 @@ void	finish_game(t_game *vars)
 void	move_to_up(t_game *vars, t_point player_position)
 {
 	if (vars->map[player_position.x - 1][player_position.y] == 'E'
-		&& char_validator(vars->map, 'C')){
+		&& char_validator(vars->map, 'C'))
 		ft_putstr("YOU NEED TO CATH ALL THE COLLECTIBLES BEFORE LEAVE\n");
-	} else if (vars->map[player_position.x - 1][player_position.y] == 'E'
-		&& !char_validator(vars->map, 'C')) {
+	else if (vars->map[player_position.x - 1][player_position.y] == 'E'
+		&& !char_validator(vars->map, 'C'))
 		finish_game(vars);
-	}
-	if (vars->map[player_position.x - 1][player_position.y] == 'C'){
+	if (vars->map[player_position.x - 1][player_position.y] == 'C')
+	{
 		vars->map[player_position.x - 1][player_position.y] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
 		map_render(*vars);
-		ft_putstr("UP\n");
 	}
-	if (vars->map[player_position.x - 1][player_position.y] == '0'){
+	if (vars->map[player_position.x - 1][player_position.y] == '0')
+	{
 		vars->map[player_position.x - 1][player_position.y] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
 		map_render(*vars);
-		ft_putstr("UP\n");
 	}
 }
+
 void	move_to_down(t_game *vars, t_point player_position)
 {
 	if (vars->map[player_position.x + 1][player_position.y] == 'E'
-		&& char_validator(vars->map, 'C')){
+		&& char_validator(vars->map, 'C'))
 		ft_putstr("YOU NEED TO CATH ALL THE COLLECTIBLES BEFORE LEAVE\n");
-	} else if (vars->map[player_position.x + 1][player_position.y] == 'E'
-		&& !char_validator(vars->map, 'C')) {
+	else if (vars->map[player_position.x + 1][player_position.y] == 'E'
+		&& !char_validator(vars->map, 'C'))
 		finish_game(vars);
-	}
-	if (vars->map[player_position.x + 1][player_position.y] == 'C'){
+	if (vars->map[player_position.x + 1][player_position.y] == 'C')
+	{
 		vars->map[player_position.x + 1][player_position.y] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
 		map_render(*vars);
-		ft_putstr("DOWN\n");
 	}
-	if (vars->map[player_position.x + 1][player_position.y] == '0'){
+	if (vars->map[player_position.x + 1][player_position.y] == '0')
+	{
 		vars->map[player_position.x + 1][player_position.y] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
 		map_render(*vars);
-		ft_putstr("DOWN\n");
 	}
 }
+
 void	move_to_left(t_game *vars, t_point player_position)
 {
 	if (vars->map[player_position.x][player_position.y - 1] == 'E'
-		&& char_validator(vars->map, 'C')){
+		&& char_validator(vars->map, 'C'))
 		ft_putstr("YOU NEED TO CATH ALL THE COLLECTIBLES BEFORE LEAVE\n");
-	} else if (vars->map[player_position.x][player_position.y - 1] == 'E'
-		&& !char_validator(vars->map, 'C')) {
+	else if (vars->map[player_position.x][player_position.y - 1] == 'E'
+		&& !char_validator(vars->map, 'C'))
 		finish_game(vars);
-	}
-	if (vars->map[player_position.x][player_position.y - 1] == 'C'){
+	if (vars->map[player_position.x][player_position.y - 1] == 'C')
+	{
 		vars->map[player_position.x][player_position.y - 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
-		vars->player = vars->batman_left;
+		vars->player = vars->b_b;
 		map_render(*vars);
-		ft_putstr("LEFT\n");
 	}
-	if (vars->map[player_position.x][player_position.y - 1] == '0'){
+	if (vars->map[player_position.x][player_position.y - 1] == '0')
+	{
 		vars->map[player_position.x][player_position.y - 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
-		vars->player = vars->batman_left;
+		vars->player = vars->b_b;
 		map_render(*vars);
-		ft_putstr("LEFT\n");
 	}
 }
+
 void	move_to_right(t_game *vars, t_point player_position)
 {
 	if (vars->map[player_position.x][player_position.y + 1] == 'E'
-		&& char_validator(vars->map, 'C')){
+		&& char_validator(vars->map, 'C'))
 		ft_putstr("YOU NEED TO CATH ALL THE COLLECTIBLES BEFORE LEAVE\n");
-	} else if (vars->map[player_position.x][player_position.y + 1] == 'E'
-		&& !char_validator(vars->map, 'C')) {
+	else if (vars->map[player_position.x][player_position.y + 1] == 'E'
+		&& !char_validator(vars->map, 'C'))
 		finish_game(vars);
-	}
-	if (vars->map[player_position.x][player_position.y + 1] == 'C'){
+	if (vars->map[player_position.x][player_position.y + 1] == 'C')
+	{
 		vars->map[player_position.x][player_position.y + 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
 		vars->player = vars->batman;
 		map_render(*vars);
-		ft_putstr("RIGHT\n");
 	}
-	if (vars->map[player_position.x][player_position.y + 1] == '0'){
+	if (vars->map[player_position.x][player_position.y + 1] == '0')
+	{
 		vars->map[player_position.x][player_position.y + 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
 		vars->player = vars->batman;
 		map_render(*vars);
-		ft_putstr("RIGHT\n");
 	}
 }

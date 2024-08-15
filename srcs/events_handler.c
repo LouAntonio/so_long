@@ -6,48 +6,50 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:38:51 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/14 17:40:11 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:11:32 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	player_up(t_game *vars)
+void	player_up(t_game *vars, t_point	player_position)
 {
-	t_point player_position = get_player_position(vars->map, 'P');
 	if (vars->map[player_position.x - 1][player_position.y] != '1')
 		move_to_up(vars, player_position);
 }
-void	player_left(t_game *vars)
+
+void	player_left(t_game *vars, t_point	player_position)
 {
-	t_point player_position = get_player_position(vars->map, 'P');
 	if (vars->map[player_position.x][player_position.y - 1] != '1')
 		move_to_left(vars, player_position);
 }
-void	player_down(t_game *vars)
+
+void	player_down(t_game *vars, t_point	player_position)
 {
-	t_point player_position = get_player_position(vars->map, 'P');
 	if (vars->map[player_position.x + 1][player_position.y] != '1')
 		move_to_down(vars, player_position);
 }
-void	player_right(t_game *vars)
+
+void	player_right(t_game *vars, t_point	player_position)
 {
-	t_point player_position = get_player_position(vars->map, 'P');
 	if (vars->map[player_position.x][player_position.y + 1] != '1')
 		move_to_right(vars, player_position);
 }
 
 int	key_press_handler(int keycode, t_game *vars)
 {
+	t_point	player_position;
+
+	player_position = get_player_position(vars->map, 'P');
 	if (keycode == 65307)
 		finish_game(vars);
 	else if (keycode == 65363)
-		player_right(vars);
+		player_right(vars, player_position);
 	else if (keycode == 65361)
-		player_left(vars);
+		player_left(vars, player_position);
 	else if (keycode == 65362)
-		player_up(vars);
+		player_up(vars, player_position);
 	else if (keycode == 65364)
-		player_down(vars);
+		player_down(vars, player_position);
 	return (0);
 }

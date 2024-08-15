@@ -6,13 +6,13 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:33:57 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/13 19:35:11 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 12:28:46 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{

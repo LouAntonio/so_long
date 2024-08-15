@@ -6,7 +6,7 @@
 #    By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:16:28 by lantonio          #+#    #+#              #
-#    Updated: 2024/08/13 17:59:38 by lantonio         ###   ########.fr        #
+#    Updated: 2024/08/15 12:42:20 by lantonio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,12 @@ MLXLIB	= mlx/libmlx.a
 SRCS	= so_long.c\
 			./srcs/ft_split.c\
 			./srcs/map_validator.c\
+			./srcs/map_validator_2.c\
 			./srcs/map_render.c\
 			./srcs/events_handler.c\
 			./srcs/player_moves.c\
+			./srcs/map_filling.c\
+			./srcs/map_vars_validation.c\
 			./srcs/utils.c\
 
 OBJS	= $(SRCS:.c=.o)
