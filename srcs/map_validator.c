@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 13:56:43 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:01:51 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ char	**get_map(char *av)
 	if (fd == -1)
 	{
 		ft_putstr("Error\nError while reading the map!\n");
+		close(fd);
 		exit(1);
 	}
 	while (read(fd, &c, 1))
 		str[i++] = c;
 	str[i] = '\0';
+	if (ft_strlen(str) < 9)
+		exit_on_read(fd);
 	close(fd);
 	mat = ft_split(str, '\n');
 	return (mat);
@@ -73,6 +76,11 @@ int	keep_validating(char *av)
 	char	**map;
 
 	map = get_map(av);
+	if (map == NULL)
+	{
+		ft_putstr("Error 3\nThe map is empty\n");
+		exit(1);
+	}
 	w = ft_strlen(map[0]) + 1;
 	h = matrix_len(map) + 1;
 	flood_fill(map, (t_point){w, h}, get_char_position(get_map(av), 'P'));
@@ -91,6 +99,11 @@ int	map_validator(char *av)
 
 	flag = 0;
 	map = get_map(av);
+	if (map == NULL)
+	{
+		ft_putstr("Error 2\nThe map is empty\n");
+		exit(1);
+	}
 	if (line_validator(map[0]) || line_validator(map[matrix_len(map) - 1]))
 		flag = 1;
 	if (!column_validator(map) || !valid_dimentions(map))

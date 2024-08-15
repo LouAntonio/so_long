@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:33:57 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 12:28:46 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 17:46:33 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ int	main(int ac, char **av)
 			exit(1);
 	}
 	else
-		ft_putstr("You need to pass a map path!\n");
+		ft_putstr("Error\nYou need to pass a map path!\n");
 	return (0);
 }

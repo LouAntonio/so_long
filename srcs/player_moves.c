@@ -6,20 +6,11 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:04:44 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 13:28:45 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:03:41 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	finish_game(t_game *vars)
-{
-	mlx_destroy_window(vars->mlx, vars->mlx_w);
-	mlx_destroy_display(vars->mlx);
-	free(vars->mlx);
-	free_matrix(vars->map);
-	exit(0);
-}
 
 void	move_to_up(t_game *vars, t_point player_position)
 {

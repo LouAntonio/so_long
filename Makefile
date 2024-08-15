@@ -6,7 +6,7 @@
 #    By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:16:28 by lantonio          #+#    #+#              #
-#    Updated: 2024/08/15 12:42:20 by lantonio         ###   ########.fr        #
+#    Updated: 2024/08/15 18:03:04 by lantonio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRCS	= so_long.c\
 			./srcs/player_moves.c\
 			./srcs/map_filling.c\
 			./srcs/map_vars_validation.c\
+			./srcs/game_exit.c\
 			./srcs/utils.c\
 
 OBJS	= $(SRCS:.c=.o)
