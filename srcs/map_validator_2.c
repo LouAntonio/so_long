@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 12:43:44 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 12:46:24 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:54:32 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,28 @@ t_point	get_player_position(char **map, char c)
 		i++;
 	}
 	return ((t_point){i, j});
+}
+
+int	valid_chars_only(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] != '0' && map[i][j] != '1'
+				&& map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P')
+			{
+				ft_putstr("Error\nThere is an invalid char in the map!\n");
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

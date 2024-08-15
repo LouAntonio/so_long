@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 13:24:19 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:58:20 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 # include <stdlib.h>
 # include <string.h>
 
-typedef struct	s_point
+typedef struct s_point
 {
 	int	x;
 	int	y;
 }	t_point;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	int		x;
 	int		y;

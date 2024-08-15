@@ -6,39 +6,41 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:19:07 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 13:32:26 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:46:01 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+void	keep_rendering(t_game vars, t_point pos, int i, int j)
+{
+	pos.x = 50 * j;
+	pos.y = 50 * i;
+	if (vars.map[i][j] == '1')
+		vars.img = vars.rocks;
+	else if (vars.map[i][j] == '0')
+		vars.img = vars.grass;
+	else if (vars.map[i][j] == 'C')
+		vars.img = vars.batarang;
+	else if (vars.map[i][j] == 'P')
+		vars.img = vars.player;
+	else if (vars.map[i][j] == 'E')
+		vars.img = vars.mobile;
+	mlx_put_image_to_window(vars.mlx, vars.mlx_w, vars.img, pos.x, pos.y);
+}
+
 void	map_render(t_game vars)
 {
-	int	i;
-	int	j;
-	int	x;
-	int	y;
+	int		i;
+	int		j;
+	t_point	pos;
 
 	i = -1;
 	while (vars.map[++i])
 	{
 		j = -1;
 		while (vars.map[i][++j])
-		{
-			x = 50 * j;
-			y = 50 * i;
-			if (vars.map[i][j] == '1')
-				vars.img = vars.rocks;
-			else if (vars.map[i][j] == '0')
-				vars.img = vars.grass;
-			else if (vars.map[i][j] == 'C')
-				vars.img = vars.batarang;
-			else if (vars.map[i][j] == 'P')
-				vars.img = vars.player;
-			else if (vars.map[i][j] == 'E')
-				vars.img = vars.mobile;
-			mlx_put_image_to_window(vars.mlx, vars.mlx_w, vars.img, x, y);
-		}
+			keep_rendering(vars, pos, i, j);
 	}
 }
 

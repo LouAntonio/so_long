@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 13:35:48 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 13:56:43 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,41 +66,31 @@ int	column_validator(char **str)
 	return (1);
 }
 
-int	valid_chars_only(char **map)
+int	keep_validating(char *av)
 {
-	int	i;
-	int	j;
+	int		w;
+	int		h;
+	char	**map;
 
-	i = 0;
-	while (map[i])
+	map = get_map(av);
+	w = ft_strlen(map[0]) + 1;
+	h = matrix_len(map) + 1;
+	flood_fill(map, (t_point){w, h}, get_char_position(get_map(av), 'P'));
+	if (char_validator(map, 'P') || char_validator(map, 'E')
+		|| char_validator(map, 'C'))
 	{
-		j = 0;
-		while (map[i][j])
-		{
-			if (map[i][j] != '0' && map[i][j] != '1'
-				&& map[i][j] != 'C' && map[i][j] != 'E' && map[i][j] != 'P')
-			{
-				ft_putstr("Error\nThere is an invalid char in the map!\n");
-				return (0);
-			}
-			j++;
-		}
-		i++;
+		ft_putstr("Error\nCan't catch all the collectables and exit\n");
+		return (0);
 	}
-	return (1);
 }
 
 int	map_validator(char *av)
 {
 	int		flag;
 	char	**map;
-	int		w;
-	int		h;
 
 	flag = 0;
 	map = get_map(av);
-	w = ft_strlen(map[0]) + 1;
-	h = matrix_len(map) + 1;
 	if (line_validator(map[0]) || line_validator(map[matrix_len(map) - 1]))
 		flag = 1;
 	if (!column_validator(map) || !valid_dimentions(map))
@@ -111,12 +101,6 @@ int	map_validator(char *av)
 		flag = 1;
 	if (flag)
 		return (0);
-	flood_fill(map, (t_point){w, h}, get_char_position(get_map(av), 'P'));
-	if (char_validator(map, 'P') || char_validator(map, 'E')
-		|| char_validator(map, 'C'))
-	{
-		ft_putstr("Its not possible to catch all the collectables and exit\n");
-		return (0);
-	}
+	keep_validating(av);
 	return (1);
 }
