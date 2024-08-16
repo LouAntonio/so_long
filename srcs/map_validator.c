@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 18:01:51 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/16 11:22:07 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ char	**get_map(char *av)
 	char	str[2000];
 
 	i = 0;
+	if (!valid_extension(av))
+		exit(1);
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
-	{
-		ft_putstr("Error\nError while reading the map!\n");
-		close(fd);
-		exit(1);
-	}
+		exit_while_reading(fd);
 	while (read(fd, &c, 1))
 		str[i++] = c;
 	str[i] = '\0';
@@ -74,22 +72,23 @@ int	keep_validating(char *av)
 	int		w;
 	int		h;
 	char	**map;
+	char	**map_new;
 
 	map = get_map(av);
-	if (map == NULL)
-	{
-		ft_putstr("Error 3\nThe map is empty\n");
-		exit(1);
-	}
+	map_new = get_map(av);
 	w = ft_strlen(map[0]) + 1;
 	h = matrix_len(map) + 1;
-	flood_fill(map, (t_point){w, h}, get_char_position(get_map(av), 'P'));
+	flood_fill(map, (t_point){w, h}, get_char_position(map_new, 'P'));
 	if (char_validator(map, 'P') || char_validator(map, 'E')
 		|| char_validator(map, 'C'))
 	{
+		free_matrix(map);
+		free_matrix(map_new);
 		ft_putstr("Error\nCan't catch all the collectables and exit\n");
-		return (0);
+		exit (1);
 	}
+	free_matrix(map);
+	free_matrix(map_new);
 }
 
 int	map_validator(char *av)
@@ -99,11 +98,6 @@ int	map_validator(char *av)
 
 	flag = 0;
 	map = get_map(av);
-	if (map == NULL)
-	{
-		ft_putstr("Error 2\nThe map is empty\n");
-		exit(1);
-	}
 	if (line_validator(map[0]) || line_validator(map[matrix_len(map) - 1]))
 		flag = 1;
 	if (!column_validator(map) || !valid_dimentions(map))
@@ -112,6 +106,7 @@ int	map_validator(char *av)
 		flag = 1;
 	if (!exit_validator(map) || !valid_chars_only(map))
 		flag = 1;
+	free_matrix(map);
 	if (flag)
 		return (0);
 	keep_validating(av);

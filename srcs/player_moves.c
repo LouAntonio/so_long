@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:04:44 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 18:03:41 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/16 11:48:54 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	move_to_down(t_game *vars, t_point player_position)
 
 void	move_to_left(t_game *vars, t_point player_position)
 {
+	vars->player = vars->b_b;
 	if (vars->map[player_position.x][player_position.y - 1] == 'E'
 		&& char_validator(vars->map, 'C'))
 		ft_putstr("YOU NEED TO CATH ALL THE COLLECTIBLES BEFORE LEAVE\n");
@@ -68,14 +69,12 @@ void	move_to_left(t_game *vars, t_point player_position)
 	{
 		vars->map[player_position.x][player_position.y - 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
-		vars->player = vars->b_b;
 		map_render(*vars);
 	}
 	if (vars->map[player_position.x][player_position.y - 1] == '0')
 	{
 		vars->map[player_position.x][player_position.y - 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
-		vars->player = vars->b_b;
 		map_render(*vars);
 	}
 }

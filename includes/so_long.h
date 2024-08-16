@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 18:04:32 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/16 11:52:28 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	free_matrix(char **matrix);
 int		matrix_len(char **matrix);
 int		ft_strlen(char *str);
 void	ft_putstr(char *str);
+int		ft_strcmp(char *s1, char *s2);
 
 // MAP VALIDATION
 char	**get_map(char *av);
@@ -59,6 +60,7 @@ int		line_validator(char *str);
 int		column_validator(char **str);
 int		valid_chars_only(char **map);
 int		valid_dimentions(char **map);
+int		valid_extension(char *map_path);
 int		exit_validator(char **map);
 int		char_validator(char **map, char c);
 int		player_validator(char **map);
@@ -81,6 +83,7 @@ void	move_to_left(t_game *vars, t_point player_position);
 // GAME EXIT
 void	exit_on_read(int fd);
 void	finish_game(t_game *vars);
-void	close_game(t_game *vars);
+int		close_game(t_game *vars);
+void	exit_while_reading(int fd);
 
 #endif

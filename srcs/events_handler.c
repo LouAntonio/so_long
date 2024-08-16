@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 14:38:51 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 18:04:10 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/15 18:36:48 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ int	key_press_handler(int keycode, t_game *vars)
 	player_position = get_player_position(vars->map, 'P');
 	if (keycode == 65307)
 		close_game(vars);
-	else if (keycode == 65363)
+	else if (keycode == 65363 || keycode == 100)
 		player_right(vars, player_position);
-	else if (keycode == 65361)
+	else if (keycode == 65361 || keycode == 97)
 		player_left(vars, player_position);
-	else if (keycode == 65362)
+	else if (keycode == 65362 || keycode == 119)
 		player_up(vars, player_position);
-	else if (keycode == 65364)
+	else if (keycode == 65364 || keycode == 115)
 		player_down(vars, player_position);
 	return (0);
 }

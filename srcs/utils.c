@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 13:19:12 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/13 19:30:41 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/16 11:18:23 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,15 @@ void	ft_putstr(char *str)
 	i = 0;
 	while (*str)
 		i += write(1, str++, 1);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = -1;
+	while (s1[++i] && s2[i])
+		if (s1[i] != s2[i])
+			return (0);
+	return (1);
 }
