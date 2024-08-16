@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:03:23 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 11:57:22 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/16 12:51:08 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	close_game(t_game *vars)
 
 void	finish_game(t_game *vars)
 {
+	ft_putstr("Moves: 123\n");
 	mlx_destroy_image(vars->mlx, vars->batman);
 	mlx_destroy_image(vars->mlx, vars->b_b);
 	mlx_destroy_image(vars->mlx, vars->batarang);

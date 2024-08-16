@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:19:07 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 11:55:15 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/16 12:06:42 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ void	game_init(char **map)
 	vars.mlx = mlx_init();
 	vars.mlx_w = mlx_new_window(vars.mlx, vars.win_w, vars.win_h, "so_long");
 	vars.batman = mlx_xpm_file_to_image(vars.mlx, "./textures/P.xpm", &x, &y);
-	vars.player = vars.batman;
 	vars.b_b = mlx_xpm_file_to_image(vars.mlx, "./textures/Pl.xpm", &x, &y);
 	vars.batarang = mlx_xpm_file_to_image(vars.mlx, "./textures/C.xpm", &x, &y);
 	vars.mobile = mlx_xpm_file_to_image(vars.mlx, "./textures/E.xpm", &x, &y);
 	vars.grass = mlx_xpm_file_to_image(vars.mlx, "./textures/0.xpm", &x, &y);
 	vars.rocks = mlx_xpm_file_to_image(vars.mlx, "./textures/1.xpm", &x, &y);
+	vars.player = vars.batman;
 	vars.map = map;
 	map_render(vars);
 	mlx_hook(vars.mlx_w, 2, 1L << 0, key_press_handler, &vars);

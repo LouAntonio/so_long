@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 11:22:07 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/16 13:20:52 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,14 @@ int	keep_validating(char *av)
 	{
 		free_matrix(map);
 		free_matrix(map_new);
-		ft_putstr("Error\nCan't catch all the collectables and exit\n");
+		ft_putstr("Error\nCan't catch all the collectables and exit!\n");
+		exit (1);
+	}
+	if (w > 37 || h > 20)
+	{
+		free_matrix(map);
+		free_matrix(map_new);
+		ft_putstr("Error\nMap to large to be rendered!\n");;
 		exit (1);
 	}
 	free_matrix(map);

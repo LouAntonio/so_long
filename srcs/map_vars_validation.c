@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 11:50:59 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 09:09:01 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/16 12:12:38 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ int	exit_validator(char **map)
 
 int	valid_extension(char *map_path)
 {
-    int map_path_len;
+	int	map_path_len;
 
-    map_path_len = ft_strlen(map_path) - 4;
-	if (!ft_strcmp(map_path+map_path_len, ".ber"))
+	map_path_len = ft_strlen(map_path) - 4;
+	if (!ft_strcmp(map_path + map_path_len, ".ber"))
 		ft_putstr("Error\nInvalid map extension\n");
-	return (ft_strcmp(map_path+map_path_len, ".ber"));
+	return (ft_strcmp(map_path + map_path_len, ".ber"));
 }
