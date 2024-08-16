@@ -1,6 +1,8 @@
-SO_LONG
-SO_LONG faz parte de um grupo de três projetctos opcionais do segundo anel do Common Core da 42
-Ele é um pequeno jogo 2d, onde o jogador precisa recolher collecionáveis e sair do jogo.
+so_long is one of three optional projects of the seccond ring of 42 Common Core
+It is a 'simple' and small 2D game, and his goal is to make the player catch all the collectables and then scape.
+In the project, the cadet is going to use the school graphical library: the MiniLibX! This library was
+developed internally and includes basic necessary tools to open a window, create images
+and deal with keyboard and mouse events.
 
 VALID MAP SAMPLE
 
@@ -55,3 +57,9 @@ HOW TO BUILD
 		4.2.1. Handle memmory leaks
 5. Enable the game exit
 	5.1. Handle memmory leaks
+
+
+
+
+MAP VALIDATION
+BREAK ROW
