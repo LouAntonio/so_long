@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 16:16:17 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/19 09:17:44 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	**get_map(char *av)
 	int		i;
 	char	c;
 	int		fd;
-	char	**mat;
+	char	**matrix;
 	char	str[2000];
 
 	i = 0;
@@ -32,8 +32,10 @@ char	**get_map(char *av)
 	if (ft_strlen(str) < 9)
 		exit_on_read(fd);
 	close(fd);
-	mat = ft_split(str, '\n');
-	return (mat);
+	if (!non_breaks(str))
+		exit(1);
+	matrix = ft_split(str, '\n');
+	return (matrix);
 }
 
 int	line_validator(char *str)

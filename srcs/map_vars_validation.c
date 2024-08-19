@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 11:50:59 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 12:12:38 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/19 09:18:00 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,20 @@ int	valid_extension(char *map_path)
 	if (!ft_strcmp(map_path + map_path_len, ".ber"))
 		ft_putstr("Error\nInvalid map extension\n");
 	return (ft_strcmp(map_path + map_path_len, ".ber"));
+}
+
+int	non_breaks(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == '\n' && str[i + 1] == '\n' && char_in_str(str[i + 2]))
+		{
+			ft_putstr("Error\nYou cant have a breakline in the midle of the map!\n");
+			return (0);
+		}
+	}
+	return(1);
 }

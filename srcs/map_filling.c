@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 11:46:02 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 12:13:50 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/19 09:19:20 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,11 @@ void	flood_fill(char **tab, t_point size, t_point begin)
 {
 	fill(tab, size, begin, "P0C");
 	fill_exit(tab, size, begin, 'F');
+}
+
+int	char_in_str(char c)
+{
+	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C')
+		return (1);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 11:52:28 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/19 09:17:43 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int		column_validator(char **str);
 int		valid_chars_only(char **map);
 int		valid_dimentions(char **map);
 int		valid_extension(char *map_path);
+int		non_breaks(char *str);
+int		char_in_str(char c);
 int		exit_validator(char **map);
 int		char_validator(char **map, char c);
 int		player_validator(char **map);
