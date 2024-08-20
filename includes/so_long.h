@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/19 09:17:43 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:10:45 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_game
 {
 	int		x;
 	int		y;
+	int		qtt_moves;
 	int		win_w;
 	int		win_h;
 	void	*mlx;
@@ -43,6 +44,7 @@ typedef struct s_game
 	void	*grass;
 	void	*rocks;
 	char	**map;
+	char	**map_cpy;
 }	t_game;
 
 // UTILS
@@ -52,6 +54,7 @@ int		matrix_len(char **matrix);
 int		ft_strlen(char *str);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
+void	ft_putnbr(int n);
 
 // MAP VALIDATION
 char	**get_map(char *av);
