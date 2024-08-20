@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 11:46:02 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/19 09:19:20 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:11:04 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,15 @@ int	char_in_str(char c)
 	if (c == '1' || c == '0' || c == 'P' || c == 'E' || c == 'C')
 		return (1);
 	return (0);
+}
+
+void	ft_putnbr(int n)
+{
+	int		i;
+	char	*str;
+
+	str = "0123456789";
+	if (n > 9)
+		ft_putnbr(n / 10);
+	i = write (1, &str[n % 10], 1);
 }

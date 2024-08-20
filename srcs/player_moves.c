@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 16:04:44 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 12:24:14 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:37:12 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ void	move_to_up(t_game *vars, t_point player_position)
 	{
 		vars->map[player_position.x - 1][player_position.y] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
+		vars->qtt_moves++;
 		map_render(*vars);
 	}
 	if (vars->map[player_position.x - 1][player_position.y] == '0')
 	{
 		vars->map[player_position.x - 1][player_position.y] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
+		vars->qtt_moves++;
 		map_render(*vars);
 	}
 }
@@ -46,12 +48,14 @@ void	move_to_down(t_game *vars, t_point player_position)
 	{
 		vars->map[player_position.x + 1][player_position.y] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
+		vars->qtt_moves++;
 		map_render(*vars);
 	}
 	if (vars->map[player_position.x + 1][player_position.y] == '0')
 	{
 		vars->map[player_position.x + 1][player_position.y] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
+		vars->qtt_moves++;
 		map_render(*vars);
 	}
 }
@@ -69,12 +73,14 @@ void	move_to_left(t_game *vars, t_point player_position)
 	{
 		vars->map[player_position.x][player_position.y - 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
+		vars->qtt_moves++;
 		map_render(*vars);
 	}
 	if (vars->map[player_position.x][player_position.y - 1] == '0')
 	{
 		vars->map[player_position.x][player_position.y - 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
+		vars->qtt_moves++;
 		map_render(*vars);
 	}
 }
@@ -91,6 +97,7 @@ void	move_to_right(t_game *vars, t_point player_position)
 	{
 		vars->map[player_position.x][player_position.y + 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
+		vars->qtt_moves++;
 		vars->player = vars->batman;
 		map_render(*vars);
 	}
@@ -98,6 +105,7 @@ void	move_to_right(t_game *vars, t_point player_position)
 	{
 		vars->map[player_position.x][player_position.y + 1] = 'P';
 		vars->map[player_position.x][player_position.y] = '0';
+		vars->qtt_moves++;
 		vars->player = vars->batman;
 		map_render(*vars);
 	}

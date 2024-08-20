@@ -6,11 +6,36 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:19:07 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/16 12:06:42 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:37:26 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	ft_putchar_on_map(char c)
+{
+	int	i;
+
+	if (c == '0')
+		c = '.';
+	i = write(1, &c, 1);
+}
+
+void	print_map(char **map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+			ft_putchar_on_map(map[i][j]);
+		ft_putchar_on_map('\n');
+	}
+	ft_putchar_on_map('\n');
+}
 
 void	keep_rendering(t_game vars, t_point pos, int i, int j)
 {
@@ -33,8 +58,11 @@ void	map_render(t_game vars)
 {
 	int		i;
 	int		j;
+	int		k;
+	int		l;
 	t_point	pos;
 
+	k = -1;
 	i = -1;
 	while (vars.map[++i])
 	{
@@ -62,6 +90,8 @@ void	game_init(char **map)
 	vars.rocks = mlx_xpm_file_to_image(vars.mlx, "./textures/1.xpm", &x, &y);
 	vars.player = vars.batman;
 	vars.map = map;
+	vars.map_cpy = map;
+	vars.qtt_moves = 0;
 	map_render(vars);
 	mlx_hook(vars.mlx_w, 2, 1L << 0, key_press_handler, &vars);
 	mlx_hook(vars.mlx_w, 17, 1L << 0, close_game, &vars);
