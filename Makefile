@@ -6,7 +6,7 @@
 #    By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:16:28 by lantonio          #+#    #+#              #
-#    Updated: 2024/08/15 18:03:04 by lantonio         ###   ########.fr        #
+#    Updated: 2024/08/21 10:21:48 by lantonio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NAME	= so_long
 all: $(NAME)
 
 $(NAME): $(OBJS) $(MLXLIB)
-	$(CC) $(OBJS) -Iincludes -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz  -o $(NAME)
+	$(CC) $(FLAGS) $(OBJS) -Iincludes -Lmlx -lmlx -L/usr/lib -Imlx -lXext -lX11 -lm -lz  -o $(NAME)
 
 $(MLXLIB):
 	$(MAKE) -C ./mlx

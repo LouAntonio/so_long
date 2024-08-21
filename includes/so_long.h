@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/20 12:10:45 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:29:17 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,12 @@ typedef struct s_game
 	void	*img;
 	void	*player;
 	void	*batman;
-	void	*b_b;
+	void	*bat_left;
 	void	*batarang;
 	void	*mobile;
 	void	*grass;
 	void	*rocks;
 	char	**map;
-	char	**map_cpy;
 }	t_game;
 
 // UTILS
@@ -55,22 +54,26 @@ int		ft_strlen(char *str);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_putnbr(int n);
+void	show_player_moves(t_game *vars);
+t_point	get_player_position(char **map, char c);
+t_point	get_char_position(char **map, char c);
+
+// MAP READING
+char	**get_map(char *av);
+int		valid_extension(char *map_path);
+int		non_breaks(char *str);
 
 // MAP VALIDATION
-char	**get_map(char *av);
 int		map_validator(char *av);
 int		line_validator(char *str);
 int		column_validator(char **str);
-int		valid_chars_only(char **map);
 int		valid_dimentions(char **map);
-int		valid_extension(char *map_path);
-int		non_breaks(char *str);
-int		char_in_str(char c);
-int		exit_validator(char **map);
-int		char_validator(char **map, char c);
+int		valid_chars_only(char **map);
 int		player_validator(char **map);
 int		collectable_validator(char **map);
-t_point	get_char_position(char **map, char c);
+int		exit_validator(char **map);
+int		char_in_str(char c);
+int		char_validator(char **map, char c);
 void	flood_fill(char **tab, t_point size, t_point begin);
 
 // GAME INITIALIZATION
@@ -79,7 +82,6 @@ void	map_render(t_game vars);
 
 // EVENTS HANDLER & PLAYER MOVES
 int		key_press_handler(int keycode, t_game *vars);
-t_point	get_player_position(char **map, char c);
 void	move_to_up(t_game *vars, t_point player_position);
 void	move_to_right(t_game *vars, t_point player_position);
 void	move_to_down(t_game *vars, t_point player_position);

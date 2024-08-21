@@ -6,11 +6,18 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:03:23 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/20 12:09:45 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:17:23 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	show_player_moves(t_game *vars)
+{
+	ft_putstr("Moves: ");
+	ft_putnbr(vars->qtt_moves);
+	ft_putstr("\n");
+}
 
 void	exit_on_read(int fd)
 {
@@ -29,7 +36,7 @@ void	exit_while_reading(int fd)
 int	close_game(t_game *vars)
 {
 	mlx_destroy_image(vars->mlx, vars->batman);
-	mlx_destroy_image(vars->mlx, vars->b_b);
+	mlx_destroy_image(vars->mlx, vars->bat_left);
 	mlx_destroy_image(vars->mlx, vars->batarang);
 	mlx_destroy_image(vars->mlx, vars->mobile);
 	mlx_destroy_image(vars->mlx, vars->grass);
@@ -44,11 +51,11 @@ int	close_game(t_game *vars)
 
 void	finish_game(t_game *vars)
 {
-	ft_putstr("Moves: ");
+	ft_putstr("Total moves: ");
 	ft_putnbr(vars->qtt_moves);
 	ft_putstr("\n");
 	mlx_destroy_image(vars->mlx, vars->batman);
-	mlx_destroy_image(vars->mlx, vars->b_b);
+	mlx_destroy_image(vars->mlx, vars->bat_left);
 	mlx_destroy_image(vars->mlx, vars->batarang);
 	mlx_destroy_image(vars->mlx, vars->mobile);
 	mlx_destroy_image(vars->mlx, vars->grass);
