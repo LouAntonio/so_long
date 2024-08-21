@@ -6,11 +6,27 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/21 12:29:07 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/21 13:17:21 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+int	map_lenth(char *av)
+{
+	int		i;
+	int		fd;
+	char	c;
+
+	i = 0;
+	fd = open(av, O_RDONLY);
+	if (fd == -1)
+		exit_while_reading(fd);
+	while (read(fd, &c, 1))
+		i++;
+	close(fd);
+	return (i);
+}
 
 char	**get_map(char *av)
 {
@@ -18,7 +34,7 @@ char	**get_map(char *av)
 	char	c;
 	int		fd;
 	char	**matrix;
-	char	str[2000];
+	char	*str;
 
 	i = 0;
 	if (!valid_extension(av))
@@ -26,6 +42,7 @@ char	**get_map(char *av)
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
 		exit_while_reading(fd);
+	str = malloc(sizeof (char *) * (map_lenth(av) + 1));
 	while (read(fd, &c, 1))
 		str[i++] = c;
 	str[i] = '\0';

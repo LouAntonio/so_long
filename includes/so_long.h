@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/21 12:29:17 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/21 12:40:38 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
-# include <stdio.h>
+# include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
 
 typedef struct s_point
 {
@@ -54,7 +52,7 @@ int		ft_strlen(char *str);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_putnbr(int n);
-void	show_player_moves(t_game *vars);
+void	show_player_moves(t_game *game);
 t_point	get_player_position(char **map, char c);
 t_point	get_char_position(char **map, char c);
 
@@ -78,19 +76,19 @@ void	flood_fill(char **tab, t_point size, t_point begin);
 
 // GAME INITIALIZATION
 void	game_init(char **map);
-void	map_render(t_game vars);
+void	map_render(t_game game);
 
 // EVENTS HANDLER & PLAYER MOVES
-int		key_press_handler(int keycode, t_game *vars);
-void	move_to_up(t_game *vars, t_point player_position);
-void	move_to_right(t_game *vars, t_point player_position);
-void	move_to_down(t_game *vars, t_point player_position);
-void	move_to_left(t_game *vars, t_point player_position);
+int		key_press_handler(int keycode, t_game *game);
+void	move_to_up(t_game *game, t_point player_position);
+void	move_to_right(t_game *game, t_point player_position);
+void	move_to_down(t_game *game, t_point player_position);
+void	move_to_left(t_game *game, t_point player_position);
 
 // GAME EXIT
 void	exit_on_read(int fd);
-void	finish_game(t_game *vars);
-int		close_game(t_game *vars);
+void	finish_game(t_game *game);
+int		close_game(t_game *game);
 void	exit_while_reading(int fd);
 
 #endif
