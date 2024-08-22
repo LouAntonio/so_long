@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 11:50:59 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/19 09:28:12 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/22 08:42:08 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,10 @@ int	non_breaks(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (str[i] == '\n' && str[i + 1] == '\n' && char_in_str(str[i + 2]))
+		if ((str[i] == '\n' && str[i + 1] == '\n')
+			|| (str[i] == '\n' && str[i + 1] == '\0'))
 		{
-			ft_putstr("Error\nYou cant have a breakline\n");
-			ft_putstr("in the midle of the map!");
+			ft_putstr("Error\nYou cant have a breakline in the map!\n");
 			return (0);
 		}
 	}

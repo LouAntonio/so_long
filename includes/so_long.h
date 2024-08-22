@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/21 12:40:38 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/22 08:43:56 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int		matrix_len(char **matrix);
 int		ft_strlen(char *str);
 void	ft_putstr(char *str);
 int		ft_strcmp(char *s1, char *s2);
+int		map_lenth(char *av);
 void	ft_putnbr(int n);
 void	show_player_moves(t_game *game);
 t_point	get_player_position(char **map, char c);
@@ -70,7 +71,6 @@ int		valid_chars_only(char **map);
 int		player_validator(char **map);
 int		collectable_validator(char **map);
 int		exit_validator(char **map);
-int		char_in_str(char c);
 int		char_validator(char **map, char c);
 void	flood_fill(char **tab, t_point size, t_point begin);
 

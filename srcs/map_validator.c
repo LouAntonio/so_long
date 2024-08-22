@@ -6,27 +6,11 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/21 13:17:21 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/22 12:18:24 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	map_lenth(char *av)
-{
-	int		i;
-	int		fd;
-	char	c;
-
-	i = 0;
-	fd = open(av, O_RDONLY);
-	if (fd == -1)
-		exit_while_reading(fd);
-	while (read(fd, &c, 1))
-		i++;
-	close(fd);
-	return (i);
-}
 
 char	**get_map(char *av)
 {
@@ -52,6 +36,7 @@ char	**get_map(char *av)
 	if (!non_breaks(str))
 		exit(1);
 	matrix = ft_split(str, '\n');
+	free(str);
 	return (matrix);
 }
 
