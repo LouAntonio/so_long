@@ -59,7 +59,7 @@ and deal with keyboard and mouse events.
   - A collectible cant be surrounded by walls
   - So forth...
   
-In case of error in any of this verifications, the game window can't be displayed, and the program must show an `error\n`, and a custom message (optional)
+In case of error in any of this verifications, the game window can't be displayed, and the program must show an `error\n`, and a custom explicit message
 
 ### HOW TO BUILD
 <ul style="list-style: none">
