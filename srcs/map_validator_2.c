@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 12:43:44 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/15 13:54:32 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:11:24 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	valid_dimentions(char **map)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (map[i])
@@ -64,17 +63,14 @@ t_point	get_char_position(char **map, char c)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (map[i])
+	i = -1;
+	j = -1;
+	while (map[++i])
 	{
-		j = 0;
-		while (map[i][j])
-		{
+		j = -1;
+		while (map[i][++j])
 			if (map[i][j] == c)
 				return ((t_point){j, i});
-			j++;
-		}
-		i++;
 	}
 	return ((t_point){i, j});
 }
@@ -84,17 +80,14 @@ t_point	get_player_position(char **map, char c)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (map[i])
+	i = -1;
+	j = -1;
+	while (map[++i])
 	{
-		j = 0;
-		while (map[i][j])
-		{
+		j = -1;
+		while (map[i][++j])
 			if (map[i][j] == c)
 				return ((t_point){i, j});
-			j++;
-		}
-		i++;
 	}
 	return ((t_point){i, j});
 }

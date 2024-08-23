@@ -6,36 +6,11 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:19:07 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/21 12:35:57 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:28:26 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	ft_putchar_on_map(char c)
-{
-	int	i;
-
-	if (c == '0')
-		c = '.';
-	i = write(1, &c, 1);
-}
-
-void	print_map(char **map)
-{
-	int	i;
-	int	j;
-
-	i = -1;
-	while (map[++i])
-	{
-		j = -1;
-		while (map[i][++j])
-			ft_putchar_on_map(map[i][j]);
-		ft_putchar_on_map('\n');
-	}
-	ft_putchar_on_map('\n');
-}
 
 void	keep_rendering(t_game game, t_point pos, int i, int j)
 {
@@ -58,11 +33,8 @@ void	map_render(t_game game)
 {
 	int		i;
 	int		j;
-	int		k;
-	int		l;
 	t_point	pos;
 
-	k = -1;
 	i = -1;
 	while (game.map[++i])
 	{

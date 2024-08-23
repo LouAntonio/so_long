@@ -6,7 +6,7 @@
 #    By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/08 17:16:28 by lantonio          #+#    #+#              #
-#    Updated: 2024/08/21 10:21:48 by lantonio         ###   ########.fr        #
+#    Updated: 2024/08/23 11:29:03 by lantonio         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS	= so_long.c\
 			./srcs/utils.c\
 
 OBJS	= $(SRCS:.c=.o)
+
 NAME	= so_long
 
 all: $(NAME)
@@ -38,7 +39,7 @@ $(MLXLIB):
 	$(MAKE) -C ./mlx
 
 %.o: %.c
-	$(CC) -I/usr/include -Imlx -O3 -c $< -o $@
+	$(CC) $(FLAGS) -I/usr/include -Imlx -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -46,8 +47,5 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-
-run: all
-	./so_long maps/valids/big.ber
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 11:46:02 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/22 11:03:48 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:17:34 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ void	ft_putnbr(int n)
 	int		i;
 	char	*str;
 
+	i = 0;
 	str = "0123456789";
 	if (n > 9)
 		ft_putnbr(n / 10);
-	i = write (1, &str[n % 10], 1);
+	i += write (1, &str[n % 10], 1);
 }
 
 int	map_lenth(char *av)
