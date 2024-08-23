@@ -75,8 +75,7 @@ In case of error in any of this verifications, the game window can't be displaye
   <li>Map rendering</li>
   <li>Events handling
     <ul>
-      <li>Errors handling</li>
-        <li>(ESC key || Q key) <b>&&</b> window cross must close the game
+        <li>(ESC key || Q key) <b>&&</b> window cross must close the game smoothlly
           <ul>
           <li>Handle memmory leaks</li>
         </ul>
