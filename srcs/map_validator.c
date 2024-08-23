@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/07 16:42:21 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/22 12:18:24 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/23 12:05:00 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ char	**get_map(char *av)
 		str[i++] = c;
 	str[i] = '\0';
 	if (ft_strlen(str) < 9)
-		exit_on_read(fd);
+		exit_on_read(fd, str);
 	close(fd);
 	if (!non_breaks(str))
-		exit(1);
+		exit_cause_break(str);
 	matrix = ft_split(str, '\n');
 	free(str);
 	return (matrix);

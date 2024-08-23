@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 18:03:23 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/22 17:50:34 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/23 11:58:24 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@ void	show_player_moves(t_game *game)
 	ft_putstr("\n");
 }
 
-void	exit_on_read(int fd)
+void	exit_on_read(int fd, char *str)
 {
 	ft_putstr("Error\nInvalid map!\n");
 	close(fd);
+	free(str);
 	exit(1);
 }
 

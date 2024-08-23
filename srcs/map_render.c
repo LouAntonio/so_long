@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/12 12:19:07 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/23 11:28:26 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/23 12:06:46 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	map_render(t_game game)
 		while (game.map[i][++j])
 			keep_rendering(game, pos, i, j);
 	}
+}
+
+void	exit_cause_break(char *str)
+{
+	free(str);
+	exit(1);
 }
 
 void	game_init(char **map)

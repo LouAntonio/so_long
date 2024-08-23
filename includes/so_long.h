@@ -6,7 +6,7 @@
 /*   By: lantonio <lantonio@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:40:43 by lantonio          #+#    #+#             */
-/*   Updated: 2024/08/22 08:43:56 by lantonio         ###   ########.fr       */
+/*   Updated: 2024/08/23 12:05:37 by lantonio         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,10 @@ void	move_to_down(t_game *game, t_point player_position);
 void	move_to_left(t_game *game, t_point player_position);
 
 // GAME EXIT
-void	exit_on_read(int fd);
-void	finish_game(t_game *game);
 int		close_game(t_game *game);
+void	finish_game(t_game *game);
 void	exit_while_reading(int fd);
+void	exit_cause_break(char *str);
+void	exit_on_read(int fd, char *str);
 
 #endif
