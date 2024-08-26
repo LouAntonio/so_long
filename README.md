@@ -5,6 +5,10 @@
 
 so_long is a 'simple' and small 2D game, and his goal is to make the player catch all the collectables and then scape.
 
+<a href="#">
+    <img src="https://github.com/LouAntonio/42-resources/blob/main/resourses/avaluations/printf.png"/>
+</a>
+
 In the project, the cadet is going to use the school graphical library: the MiniLibX! This library was
 developed internally and includes basic necessary tools to open a window, create images
 and deal with keyboard and mouse events.
